@@ -6,11 +6,9 @@ const AddressView = props => (
   <div className="address-view">
     {props.result ? (
       <div>
-        {props.result.address +
-          " " +
-          props.result.text +
-          ", " +
-          props.result.context[1].text}
+        {props.result.place_name
+          .replace("Washington, District of Columbia ", "")
+          .replace(", United States", "")}
       </div>
     ) : (
       <div>Search for an Address</div>

@@ -33,6 +33,9 @@ class Map extends React.Component {
 
     geocoder.on("result", this.handleResult);
     geocoder.on("clear", this.handleClear);
+    geocoder.on("loading", this.handleClear);
+    geocoder.on("error", this.handleClear);
+    geocoder.on("results", this.handleClear);
 
     this.map.addControl(geocoder);
   };
@@ -62,6 +65,8 @@ class Map extends React.Component {
   handleClear = () => {
     this.props.clearResult();
     this.removeMarker();
+    let marker = document.querySelector(".marker");
+    if (marker) marker.parentNode.removeChild(marker);
   };
 
   addMarker = coordinates => {
@@ -75,7 +80,11 @@ class Map extends React.Component {
     });
   };
 
-  removeMarker = () => this.marker.remove();
+  removeMarker = () => {
+    if (this.marker) {
+      this.marker.remove();
+    }
+  };
 
   render() {
     const style = {
