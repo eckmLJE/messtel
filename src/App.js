@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 import Header from "./Header/Header";
 import MapView from "./MapView/MapView";
+import AddressView from "./AddressView/AddressView";
 import User from "./User/User";
 
 import { loadUser } from "./actions/user";
@@ -38,11 +39,7 @@ class App extends Component {
           }}
         />
         <MapView setResult={this.setResult} clearResult={this.clearResult} />
-        <h1>
-          {this.state.result
-            ? this.state.result.result.place_name
-            : "Enter an Address"}
-        </h1>
+        <AddressView />
         <User />
       </div>
     );
