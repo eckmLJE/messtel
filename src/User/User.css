@@ -1,0 +1,9 @@
+.user {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 10px;
+  /* height: 50px; */
+  width: 100%;
+  background-color: #4285f4;
+}

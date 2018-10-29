@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import "./App.css";
 
+import { connect } from "react-redux";
+
 import Header from "./Header/Header";
 import MapView from "./MapView/MapView";
+import User from "./User/User";
+
+import { loadUser } from "./actions/user";
 
 class App extends Component {
   state = { result: null };
+
+  componentDidMount = () => {
+    this.props.loadUser();
+  };
 
   setResult = result => {
     console.log(result);
@@ -34,9 +43,25 @@ class App extends Component {
             ? this.state.result.result.place_name
             : "Enter an Address"}
         </h1>
+        <User />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.user.currentUser
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadUser: () => dispatch(loadUser())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
