@@ -1,4 +1,9 @@
 import React, { Fragment } from "react";
+import "./Map.css";
+import { connect } from "react-redux";
+
+import { setResult, clearResult } from "../actions/map";
+
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
@@ -7,26 +12,70 @@ mapboxgl.accessToken =
 
 const bounds = [[-77.057553, 38.889569], [-77.006577, 38.912675]];
 
-export default class Map extends React.Component {
+class Map extends React.Component {
   state = { address: "" };
 
-  componentDidMount() {
-    const map = new mapboxgl.Map({
+  map;
+  marker;
+
+  componentDidMount = () => {
+    this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/lucaseckman/cjnnjqyhn0ed12sp1u4am4ewd",
       maxBounds: bounds,
-      center: [-77.036536, 38.902549]
+      center: [-77.036536, 38.902549],
+      zoom: 13
     });
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       bbox: [-77.057553, 38.889569, -77.006577, 38.912675]
     });
 
-    geocoder.on("result", this.props.setResult);
-    geocoder.on("clear", this.props.clearResult);
+    geocoder.on("result", this.handleResult);
+    geocoder.on("clear", this.handleClear);
 
-    map.addControl(geocoder);
-  }
+    this.map.addControl(geocoder);
+  };
+
+  handleResult = result => {
+    this.props.setResult(result);
+    this.addMarker(result.result.center);
+  };
+
+  genGeoJson = coordinates => ({
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: coordinates
+        },
+        properties: {
+          title: "POI",
+          description: "Search Result"
+        }
+      }
+    ]
+  });
+
+  handleClear = () => {
+    this.props.clearResult();
+    this.removeMarker();
+  };
+
+  addMarker = coordinates => {
+    const geojson = this.genGeoJson(coordinates);
+    geojson.features.forEach(marker => {
+      let el = document.createElement("div");
+      el.className = "marker";
+      this.marker = new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(this.map);
+    });
+  };
+
+  removeMarker = () => this.marker.remove();
 
   render() {
     const style = {
@@ -43,3 +92,15 @@ export default class Map extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setResult: result => dispatch(setResult(result)),
+    clearResult: () => dispatch(clearResult())
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Map);

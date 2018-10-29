@@ -11,19 +11,8 @@ import User from "./User/User";
 import { loadUser } from "./actions/user";
 
 class App extends Component {
-  state = { result: null };
-
   componentDidMount = () => {
     this.props.loadUser();
-  };
-
-  setResult = result => {
-    console.log(result);
-    this.setState({ result: result });
-  };
-
-  clearResult = () => {
-    this.setState({ result: null });
   };
 
   render() {
@@ -38,7 +27,7 @@ class App extends Component {
             height: "65px"
           }}
         />
-        <MapView setResult={this.setResult} clearResult={this.clearResult} />
+        <MapView />
         <AddressView />
         <User />
       </div>
@@ -48,7 +37,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    result: state.map.result
   };
 };
 
