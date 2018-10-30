@@ -23,12 +23,13 @@ class Map extends React.Component {
       container: this.mapContainer,
       style: "mapbox://styles/lucaseckman/cjnnjqyhn0ed12sp1u4am4ewd",
       maxBounds: bounds,
-      center: [-77.036536, 38.902549],
+      center: [-77.036536, 38.899009],
       zoom: 13
     });
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      bbox: [-77.057553, 38.889569, -77.006577, 38.912675]
+      bbox: [-77.057553, 38.889569, -77.006577, 38.912675],
+      types: "address"
     });
 
     geocoder.on("result", this.handleResult);
