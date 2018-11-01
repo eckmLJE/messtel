@@ -14,6 +14,7 @@
 }
 
 .show-comments-button button {
+  margin-top: 10px;
   padding: 10px 20px;
   box-sizing: border-box;
   border: none;

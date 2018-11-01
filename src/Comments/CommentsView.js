@@ -28,12 +28,15 @@ class CommentsView extends Component {
           <button onClick={this.props.hideComments}>Hide Comments</button>
         </div>
         <CommentsList comments={this.props.currentAddress.comments} />
-
-        <textarea
-          onChange={e => this.setState({ content: e.target.value })}
-          value={this.state.content}
-        />
-        <button onClick={this.handleCommentSubmit}>Submit Comment</button>
+        <form>
+          <textarea
+            onChange={e => this.setState({ content: e.target.value })}
+            value={this.state.content}
+          />
+          <div className="submit-comment-button">
+            <button onClick={this.handleCommentSubmit}>Submit Comment</button>
+          </div>
+        </form>
       </div>
     );
   }

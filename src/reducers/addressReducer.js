@@ -6,13 +6,19 @@ const processAddress = address => ({
   center: address.data.attributes.center
 });
 
+const createDateString = () => {
+  let newDate = new Date();
+  return newDate.toString();
+};
+
 const processComment = comment => ({
   id: comment.data.id,
   user_id: comment.data.attributes["user-id"],
   address_id: comment.data.attributes["address-id"],
   points: comment.data.attributes.points,
   content: comment.data.attributes.content,
-  user_name: comment.data.attributes.user_name
+  user_name: comment.data.attributes["user-name"],
+  created_at: createDateString()
 });
 
 const mapReducer = (

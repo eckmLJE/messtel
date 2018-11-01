@@ -22,7 +22,6 @@ export const postNewComment = comment => dispatch => {
   postComment(comment).then(res => {
     res.status === 200
       ? res.json().then(respComment => {
-          console.log(respComment);
           dispatch(addNewComment(respComment));
           dispatch({ type: "POST_COMMENT_SUCCESS" });
         })

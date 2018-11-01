@@ -12,7 +12,6 @@ class NewAddress extends Component {
       mbid: this.props.mbid,
       center: this.props.center.toString()
     };
-    console.log(address);
     this.props.postNewAddress(address);
   };
 

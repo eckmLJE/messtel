@@ -17,7 +17,6 @@ class AddressOverview extends Component {
       updated: new Date(comment.created_at)
     }));
     sortingComments.sort((a, b) => b.updated - a.updated);
-    console.log(sortingComments[0].updated);
   };
 
   render() {

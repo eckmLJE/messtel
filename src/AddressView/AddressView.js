@@ -21,7 +21,6 @@ const processMbid = result => {
 const AddressView = props => {
   const placeName = processPlaceName(props.result);
   const mbid = processMbid(props.result);
-  console.log(props.result);
   return (
     <div className="address-view">
       {props.result ? (
