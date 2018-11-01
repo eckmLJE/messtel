@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./NewAddress.css";
 
 import { postNewAddress } from "../actions/address";
 
@@ -17,8 +18,13 @@ class NewAddress extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleCreateAddress}>Create Address Entry</button>
+      <div className="new-address">
+        <p>THIS ADDRESS DOES NOT HAVE AN ENTRY YET.</p>
+        <div className="new-address-button">
+          <button onClick={this.handleCreateAddress}>
+            CREATE ADDRESS ENTRY
+          </button>
+        </div>
       </div>
     );
   }

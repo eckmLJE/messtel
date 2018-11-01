@@ -1,6 +1,4 @@
-import { token } from "./index";
-
-const url = "http://localhost:3000/api/v1";
+import { token, url } from "./index";
 
 export const addNewComment = comment => ({
   type: "ADD_ADDRESS_COMMENT",

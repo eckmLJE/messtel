@@ -1,49 +1,51 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import "./AddressOverview.css";
 
-import { postNewComment } from "../actions/comment";
+import moment from "moment";
+
+import CommentsView from "../Comments/CommentsView";
 
 class AddressOverview extends Component {
-  state = { content: "" };
+  state = { showComments: false };
 
-  handleCommentSubmit = e => {
-    e.preventDefault();
-    const comment = {
-      address_id: this.props.currentAddress.id,
-      user_id: this.props.currentUser.id,
-      content: this.state.content,
-      user_name: this.props.currentUser.name
-    };
-    this.props.postNewComment(comment);
-    this.setState({ content: "" });
+  handleShowComments = () =>
+    this.setState({ showComments: !this.state.showComments });
+
+  getLatestUpdate = comments => {
+    let sortingComments = comments.map(comment => ({
+      id: comment.id,
+      updated: new Date(comment.created_at)
+    }));
+    sortingComments.sort((a, b) => b.updated - a.updated);
+    console.log(sortingComments[0].updated);
   };
 
   render() {
+    const comments = this.props.currentAddress.comments;
     return (
-      <div>
-        {this.props.currentAddress.comments.map(comment => (
-          <div key={comment.id}>{comment.content}</div>
-        ))}
-        <textarea
-          onChange={e => this.setState({ content: e.target.value })}
-          value={this.state.content}
-        />
-        <button onClick={this.handleCommentSubmit}>Submit Comment</button>
+      <div className="address-overview">
+        {!!comments.length ? (
+          <div>
+            <p>THIS ENTRY HAS {comments.length} COMMENTS.</p>
+            <p>
+              LAST UPDATED {moment(this.getLatestUpdate(comments)).format("L")}
+            </p>
+          </div>
+        ) : (
+          <p>No comments yet. Be the first!</p>
+        )}
+
+        <p />
+        <div className="show-comments-button">
+          <button onClick={this.handleShowComments}>Show Comments</button>
+        </div>
+
+        {this.state.showComments ? (
+          <CommentsView hideComments={this.handleShowComments} />
+        ) : null}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  currentAddress: state.address.currentAddress,
-  currentUser: state.user.currentUser
-});
-
-const mapDispatchToProps = dispatch => ({
-  postNewComment: comment => dispatch(postNewComment(comment))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddressOverview);
+export default AddressOverview;

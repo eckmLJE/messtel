@@ -26,7 +26,7 @@ const AddressView = props => {
     <div className="address-view">
       {props.result ? (
         <div>
-          <h3>{placeName}</h3>
+          <h4>{placeName}</h4>
           <LookupBox
             mbid={mbid}
             placeName={placeName}

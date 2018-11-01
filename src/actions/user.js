@@ -1,8 +1,4 @@
-const url = "http://localhost:3000/api/v1";
-
-const token = () => {
-  return localStorage.getItem("token");
-};
+import { token, url } from "./index";
 
 const postUserAuthentication = userData => {
   return fetch(`${url}/user_token`, {

@@ -1,6 +1,6 @@
-import { token } from "./index";
+import { token, url } from "./index";
 
-const url = "http://localhost:3000/api/v1";
+// const url = "http://localhost:3000/api/v1";
 
 export const setCurrentAddress = address => ({
   type: "SET_CURRENT_ADDRESS",

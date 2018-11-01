@@ -1,0 +1,28 @@
+.new-address {
+}
+
+.new-address p {
+  font-size: 0.8em;
+  width: 100%;
+  text-align: center;
+}
+
+.new-address-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.new-address-button button {
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+  cursor: pointer;
+  background-color: #4285f4;
+}
