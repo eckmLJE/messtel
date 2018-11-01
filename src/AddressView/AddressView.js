@@ -21,12 +21,17 @@ const processMbid = result => {
 const AddressView = props => {
   const placeName = processPlaceName(props.result);
   const mbid = processMbid(props.result);
+  console.log(props.result);
   return (
     <div className="address-view">
       {props.result ? (
         <div>
           <h3>{placeName}</h3>
-          <LookupBox mbid={mbid} placeName={placeName} />
+          <LookupBox
+            mbid={mbid}
+            placeName={placeName}
+            center={props.result.center}
+          />
         </div>
       ) : (
         <p>Use the Search Box to Look Up an Address</p>

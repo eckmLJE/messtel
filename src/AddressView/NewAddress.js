@@ -8,8 +8,10 @@ class NewAddress extends Component {
     e.preventDefault();
     const address = {
       name: this.props.placeName,
-      mbid: this.props.mbid
+      mbid: this.props.mbid,
+      center: this.props.center.toString()
     };
+    console.log(address);
     this.props.postNewAddress(address);
   };
 

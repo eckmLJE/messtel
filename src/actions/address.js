@@ -32,7 +32,6 @@ export const lookUpAddress = mbid => dispatch => {
   mbidLookupFetch(mbid).then(res => {
     res.status === 200
       ? res.json().then(address => {
-          console.log(address);
           if (address) {
             dispatch(setCurrentAddress(address));
           } else {
@@ -48,7 +47,6 @@ export const postNewAddress = address => dispatch => {
   postAddress(address).then(res => {
     res.status === 200
       ? res.json().then(respAddress => {
-          console.log(respAddress);
           dispatch({ type: "POST_ADDRESS_SUCCESS" });
           dispatch(setCurrentAddress(respAddress));
         })
