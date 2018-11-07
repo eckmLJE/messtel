@@ -1,6 +1,9 @@
 .address-view {
-    position: relative;
-    display: block;
-    margin: 0;
-    padding: 10px;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
 }

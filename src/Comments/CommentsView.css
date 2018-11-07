@@ -1,8 +1,10 @@
 .comments-view {
   position: fixed;
   top: 55px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 500px;
   height: calc(100vh - 55px);
   overflow-y: scroll;
   z-index: 9999;
@@ -28,7 +30,8 @@
   display: inline-block;
   font-size: 0.8em;
   cursor: pointer;
-  background-color: #4285f4;
+  background-color: #4286f4d8;
+  width: 100%;
 }
 
 .comments-view textarea {
