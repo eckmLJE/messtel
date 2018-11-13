@@ -17,6 +17,7 @@ class Map extends React.Component {
 
   map;
   marker;
+  
 
   componentDidMount = () => {
     this.map = new mapboxgl.Map({
