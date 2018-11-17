@@ -14,3 +14,9 @@
     border-bottom: 2px solid silver;
   }
 }
+
+@media screen and (min-width: 991px) {
+  .map-view {
+    width: calc(100% - 400px);
+  }
+}

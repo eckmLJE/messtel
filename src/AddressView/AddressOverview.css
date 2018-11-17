@@ -1,3 +1,11 @@
+.address-overview {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  /* border: 1px solid blue; */
+}
+
 .address-overview p {
   margin: 0;
   padding: 2px;

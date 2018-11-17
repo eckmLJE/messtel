@@ -1,0 +1,44 @@
+.address-ov-wide {
+  position: relative;
+  border: 1px solid red;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  /* align-items: flex-start; */
+  height: 100%;
+  width: 100%;
+}
+
+.address-stats {
+  padding: 10px;
+  position: relative;
+  height: 10%;
+  align-self: flex-start;
+}
+
+.address-stats ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.address-data {
+  padding: 10px;
+  position: relative;
+  height: 20%;
+  border-bottom: 1px solid silver;
+}
+
+.address-data ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.address-comments {
+  position: relative;
+  height: 70%;
+  padding-top: 10px;
+}

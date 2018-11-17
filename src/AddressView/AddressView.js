@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import "./AddressView.css";
 import LookupBox from "./LookupBox";
@@ -24,14 +24,14 @@ const AddressView = props => {
   return (
     <div className="address-view">
       {props.result ? (
-        <div>
+        <Fragment>
           <h4>{placeName}</h4>
           <LookupBox
             mbid={mbid}
             placeName={placeName}
             center={props.result.center}
           />
-        </div>
+        </Fragment>
       ) : (
         <p>Use the Search Box to Look Up an Address</p>
       )}

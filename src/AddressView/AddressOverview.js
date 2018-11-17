@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./AddressOverview.css";
 
-// import moment from "moment";
+import moment from "moment";
 import MediaQuery from "react-responsive";
 
 import AddressOV768 from "./AddressOV768";
@@ -24,19 +24,18 @@ class AddressOverview extends Component {
   };
 
   render() {
-    // const comments = this.props.currentAddress.comments;
+    const comments = this.props.currentAddress.comments;
+    const lastUpdated = moment(this.getLatestUpdate(comments)).format("L");
     return (
       <div className="address-overview">
         <MediaQuery query="(min-device-width: 769px)">
-          <AddressOVwide
-          // lastUpdated={moment(this.getLatestUpdate(comments)).format("L")}
-          />
+          <AddressOVwide lastUpdated={lastUpdated} comments={comments} />
         </MediaQuery>
-        <MediaQuery query="(max-device-width: 768px) and (min-device-width: 576px)">
-          <AddressOV768 />
+        <MediaQuery query="(min-device-width: 576px) and (max-device-width: 768px)">
+          <AddressOV768 lastUpdated={lastUpdated} comments={comments} />
         </MediaQuery>
         <MediaQuery query="(max-device-width: 575px)">
-          <AddressOV575 />
+          <AddressOV575 lastUpdated={lastUpdated} comments={comments} />
           {/* {!!comments.length ? (
             <div>
               <p>THIS ENTRY HAS {comments.length} COMMENTS.</p>
