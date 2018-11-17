@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./AddressOverview.css";
 
-import moment from "moment";
+// import moment from "moment";
 import MediaQuery from "react-responsive";
 
 import AddressOV768 from "./AddressOV768";
 import AddressOV575 from "./AddressOV575";
-// import AddressOVwide from "./AddressOVwide";
-import CommentsView from "../Comments/CommentsView";
+import AddressOVwide from "./AddressOVwide";
+// import CommentsView from "../Comments/CommentsView";
 
 class AddressOverview extends Component {
   state = { showComments: false };
@@ -24,17 +24,23 @@ class AddressOverview extends Component {
   };
 
   render() {
-    const comments = this.props.currentAddress.comments;
+    // const comments = this.props.currentAddress.comments;
     return (
       <div className="address-overview">
         <MediaQuery query="(min-device-width: 769px)">
-          {!!comments.length ? (
+          <AddressOVwide
+          // lastUpdated={moment(this.getLatestUpdate(comments)).format("L")}
+          />
+        </MediaQuery>
+        <MediaQuery query="(max-device-width: 768px) and (min-device-width: 576px)">
+          <AddressOV768 />
+        </MediaQuery>
+        <MediaQuery query="(max-device-width: 575px)">
+          <AddressOV575 />
+          {/* {!!comments.length ? (
             <div>
               <p>THIS ENTRY HAS {comments.length} COMMENTS.</p>
-              <p>
-                LAST UPDATED{" "}
-                {moment(this.getLatestUpdate(comments)).format("L")}
-              </p>
+              <p>LAST UPDATED </p>
             </div>
           ) : (
             <p>No comments yet. Be the first!</p>
@@ -42,16 +48,9 @@ class AddressOverview extends Component {
           <div className="show-comments-button">
             <button onClick={this.handleShowComments}>Show Comments</button>
           </div>
-
           {this.state.showComments ? (
             <CommentsView hideComments={this.handleShowComments} />
-          ) : null}
-        </MediaQuery>
-        <MediaQuery query="(max-device-width: 768px) and (min-device-width: 576px)">
-          <AddressOV768 />
-        </MediaQuery>
-        <MediaQuery query="(max-device-width: 575px)">
-          <AddressOV575 />
+          ) : null} */}
         </MediaQuery>
       </div>
     );

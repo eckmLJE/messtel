@@ -16,7 +16,9 @@ class LookupBox extends Component {
     return (
       <div className="lookup-box">
         {!!this.props.currentAddress ? (
-          <AddressOverview currentAddress={this.props.currentAddress} />
+          <AddressOverview
+          // currentAddress={this.props.currentAddress}
+          />
         ) : null}
         {this.props.lookUpStatus === "notFound" ? (
           <NewAddress
