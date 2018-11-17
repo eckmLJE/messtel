@@ -19,16 +19,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div
-          style={{
-            position: "relative",
-            display: "block",
-            width: "100%",
-            height: "65px"
-          }}
-        />
-        <MapView />
-        <AddressView />
+        <div className="responsive-container">
+          <MapView />
+          <AddressView />
+        </div>
         <User />
       </div>
     );

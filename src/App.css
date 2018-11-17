@@ -12,3 +12,19 @@
   font-family: "Quattrocento", serif;
   font-family: "Quattrocento Sans", sans-serif; */
 }
+
+.responsive-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 95px);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-items: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .responsive-container {
+    flex-flow: column nowrap;
+  }
+}
