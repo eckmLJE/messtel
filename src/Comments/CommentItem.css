@@ -42,14 +42,16 @@
 .point-button button {
   padding: 2px 5px;
   box-sizing: border-box;
-  border: 1px solid white;
-  color: white;
+  /* border: 1px solid white; */
+  border: none;
+  color: #4285f4;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 0.8em;
+  font-weight: 700;
   cursor: pointer;
-  background-color: #4285f4;
+  background: none;
 }
 
 .comment-item h4 {
